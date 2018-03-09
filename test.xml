@@ -1,0 +1,42 @@
+<issues total_count="47" offset="0" limit="25" type="array">
+	<issue>
+	<id>534</id>
+	<project id="1" name="ZltyMelon"/>
+	<tracker id="2" name="Feature"/>
+	<status id="1" name="New"/>
+	<priority id="2" name="Normal"/>
+	<author id="6" name="Roman Feranec"/>
+	<assigned_to id="5" name="Peter Halada"/>
+	<fixed_version id="38" name="Release 4.3"/>
+	<subject>Zadania na vylespenie Adminu</subject>
+	<description>V prilohach. Prejdime si to potom</description>
+	<start_date>2018-02-05</start_date>
+	<due_date/>
+	<done_ratio>0</done_ratio>
+	<is_private>false</is_private>
+	<estimated_hours/>
+	<created_on>2018-02-05T14:57:32Z</created_on>
+	<updated_on>2018-02-05T14:57:32Z</updated_on>
+	<closed_on/>
+	</issue>
+		<issue>
+	<id>534</id>
+	<project id="1" name="ZltyMelon"/>
+	<tracker id="2" name="Feature"/>
+	<status id="1" name="New"/>
+	<priority id="2" name="Normal"/>
+	<author id="6" name="Roman Feranec"/>
+	<assigned_to id="5" name="Peter Halada"/>
+	<fixed_version id="38" name="Release 4.3"/>
+	<subject>Zadania na vylespenie Adminu</subject>
+	<description>V prilohach. Prejdime si to potom</description>
+	<start_date>2018-02-05</start_date>
+	<due_date/>
+	<done_ratio>0</done_ratio>
+	<is_private>false</is_private>
+	<estimated_hours/>
+	<created_on>2018-02-05T14:57:32Z</created_on>
+	<updated_on>2018-02-05T14:57:32Z</updated_on>
+	<closed_on/>
+	</issue>
+</issues>
