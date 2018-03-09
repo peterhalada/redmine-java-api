@@ -17,8 +17,8 @@ public class Test
 		RedmineAPI api = new RedmineAPI();
 		api.init(server, key, project);
 		
-		List<Project> projects = api.getProjects();
-		int projectId = 3;
+		Project prj = api.findProjectByName("ZltyMelon");
+		int projectId = prj.getId();
 		
 		List<Issue> issues = api.getIssues(projectId);
 		

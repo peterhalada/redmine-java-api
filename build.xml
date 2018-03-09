@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<project name="RedmineAPI" default="CreateJar">
+<project name="redmine-java-api" default="CreateJar">
   <target name="CreateJar" description="Create Jar file">
-        <jar jarfile="../RedmineView/lib/RedmineAPI.jar" basedir="bin" includes="**/*.class" />
+        <jar jarfile="../redmine-eclipse-plugin/lib/redmine-java-api.jar" basedir="bin" includes="**/*.class" />
   </target>
 </project>
