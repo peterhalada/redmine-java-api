@@ -11,25 +11,30 @@ public class Test
 	public static void main(String []args)
 	{
 		String server = "http://redmine.projawe.com";
-		String key = "f29ddbd9af55aea74232723d094e78a098bf66df";
-		String project = "ZltyMelon";
+		String key = "19d6c98934b935aa7744a821b44e75f002d4a7d5"; // "f29ddbd9af55aea74232723d094e78a098bf66df";
+		String projectName = "GuestProject";
 
 		RedmineAPI api = new RedmineAPI();
-		api.init(server, key, project);
+		api.init(server, key, projectName);
 		
-		Project prj = api.findProjectByName("ZltyMelon");
+		Project prj = api.findProjectByName(projectName);
 		int projectId = prj.getId();
 		
-		List<Issue> issues = api.getIssues(projectId);
+		/*List<Issue> issues = api.getIssues(projectId);
 		
-		for(int i = 0; i < 10; i++)
+		for(Issue iss : issues)
 		{
-			Issue iss = issues.get(i);
-			
 			if ( iss != null )
 			{
-				System.out.println("Issue " + iss.getId() + "." + iss.getSubject() );
+				System.out.println("Issue " + iss.getId() + "." + iss.getSubject() + " ->> " + iss.getStatus().getName() );
 			}
-		}
+		}*/
+		
+		Issue i = new Issue();
+		i.setProject_Id(projectId);
+		i.setSubject("New task");
+		i.setDescription("Description");
+		//i.setPriority_Id(2);
+		api.createIssue(i);
 	}
 }

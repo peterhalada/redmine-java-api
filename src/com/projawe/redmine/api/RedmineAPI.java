@@ -37,6 +37,12 @@ import com.projawe.redmine.api.model.version.Versions;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+/**
+ * Main Redmine API controller, controls sending and receiving HTTP data to redmine server.
+ * 
+ * @author peter
+ *
+ */
 public class RedmineAPI 
 {
 	protected String url, key, currentProject;
@@ -115,6 +121,31 @@ public class RedmineAPI
 		return xstream;
 	}
 	
+	protected XStream xstreamCreateIssue()
+	{
+		XStream xstream = new XStream(new DomDriver());
+		xstream.alias("issue", Issue.class);
+		
+		//xstream.omitField(Issue.class, "tracker_id");
+		//xstream.omitField(Issue.class, "status_id");
+		//xstream.omitField(Issue.class, "priority_id");
+		//xstream.omitField(Issue.class, "category_id");
+		//xstream.omitField(Issue.class, "fixed_version_id");
+		//xstream.omitField(Issue.class, "assigned_to_id");
+		//xstream.omitField(Issue.class, "estimated_hours");
+		xstream.omitField(Issue.class, "start_date");
+		xstream.omitField(Issue.class, "due_date");
+		xstream.omitField(Issue.class, "done_ratio");
+		xstream.omitField(Issue.class, "is_private");
+		xstream.omitField(Issue.class, "created_on");
+		xstream.omitField(Issue.class, "updated_on");
+		xstream.omitField(Issue.class, "closed_on");
+		//xstream.omitField(Issue.class, "parent_issue_id");
+		xstream.omitField(Issue.class, "id");
+
+		return xstream;
+	}
+
 	/**************************************************************************
 	 * Reads list of current issues
 	 * 
@@ -153,9 +184,64 @@ public class RedmineAPI
 	}
 
 	/**
+	 * Create new issue
+	 * 
+	 * @param issue
+	 */
+	public void createIssue(Issue issue) 
+	{
+		try
+		{
+			URL url = new URL(this.url + "/issues.xml?key=" + this.key);
+
+			XStream xstream = this.xstreamCreateIssue();
+			String strIssue = xstream.toXML(issue).replace("__", "_");
+
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Accept", "application/xml");
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			conn.setRequestProperty ( "Content-Type", "text/xml" );
+			
+			System.out.println(strIssue);
+			OutputStreamWriter writer = null;
+			try {
+			    writer = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+			    writer.write(strIssue); // Write POST query string (if any needed).
+			} finally {
+			    if (writer != null) try { writer.close(); } catch (IOException logOrIgnore) {}
+			}
+
+			int responseCode = conn.getResponseCode();
+			
+			System.out.println("\nSending 'POST' request to URL : " + url);
+			System.out.println("Response Code : " + responseCode);
+			
+			/*InputStream result = conn.getInputStream();
+			
+			int res;
+			
+			while ( (res=result.read()) != -1 )
+			{
+				System.out.print((char)res);
+			}*/
+		} 
+		catch (MalformedURLException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
 	 * Update issue
 	 * 
-	 * @param i1
+	 * @param issue
 	 */
 	public void updateIssue(Issue issue) 
 	{
@@ -203,7 +289,6 @@ public class RedmineAPI
 		{
 			e.printStackTrace();
 		}
-		
 	}
 	
 	/**************************************************************************

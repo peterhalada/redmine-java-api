@@ -10,6 +10,11 @@ public class IssueAssignedTo {
 	@XStreamAsAttribute
 	protected String name;
 
+	public IssueAssignedTo(int id)
+	{
+		this.id = id;
+	}
+	
 	public IssueAssignedTo(int id, String name)
 	{
 		this.id = id;

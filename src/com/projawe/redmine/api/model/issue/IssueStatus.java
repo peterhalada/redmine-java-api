@@ -10,6 +10,11 @@ public class IssueStatus {
 	@XStreamAsAttribute
 	protected String name;
 
+	public IssueStatus(int id)
+	{
+		this.id = id;
+	}
+	
 	public IssueStatus(int id, String name)
 	{
 		this.id = id;

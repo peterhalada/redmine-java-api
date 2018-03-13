@@ -4,16 +4,16 @@ public class Issue {
 
 	protected int id;
 	
-	protected String description = "";
-	protected String subject = "";
-	protected String start_date = "";
-	protected String due_date = "";
-	protected String done_ratio = "";
-	protected String is_private = "";
-	protected String estimated_hours = "";
-	protected String created_on = "";
-	protected String updated_on = "";
-	protected String closed_on = "";
+	protected String description;
+	protected String subject;
+	protected String start_date;
+	protected String due_date;
+	protected String done_ratio;
+	protected String is_private;
+	protected String estimated_hours;
+	protected String created_on;
+	protected String updated_on;
+	protected String closed_on;
 
 	protected IssueStatus status;
 	protected IssueTracker tracker;
@@ -24,6 +24,16 @@ public class Issue {
 	protected IssueAssignedTo assigned_to;
 	protected IssueAuthor author;
 	
+	/* Create issue fields */
+	protected String project_id;
+	protected String tracker_id;
+	protected String status_id;
+	protected String priority_id;
+	protected String category_id;
+	protected String fixed_version_id;
+	protected String assigned_to_id;
+	protected String parent_issue_id;
+
 	public Issue()
 	{
 		
@@ -70,6 +80,13 @@ public class Issue {
 	{
 		if ( this.status != null )
 			this.status.setId(id);
+		else
+			this.status = new IssueStatus(id);
+	}
+
+	public void setStatus_Id(int id)
+	{
+		this.status_id = "" + id;
 	}
 
 	public IssueProject getProject()
@@ -89,6 +106,13 @@ public class Issue {
 	{
 		if ( this.project != null )
 			this.project.setId(id);
+		else
+			this.project = new IssueProject(id);
+	}
+
+	public void setProject_Id(int id)
+	{
+		this.project_id = "" + id;
 	}
 
 	public IssueAssignedTo getAssignedTo()
@@ -106,7 +130,12 @@ public class Issue {
 
 	public void setAssignedToId(int id)
 	{
-		this.assigned_to.setId(id);
+		this.assigned_to = new IssueAssignedTo(id);
+	}
+
+	public void setAssignedTo_Id(int id)
+	{
+		this.assigned_to_id = "" + id;
 	}
 
 	public IssueFixedVersion getFixedVersion()
@@ -124,7 +153,16 @@ public class Issue {
 
 	public void setFixedVersionId(int id)
 	{
-		this.fixed_version.setId(id);
+		this.fixed_version = new IssueFixedVersion(id);
 	}
 
+	public void setFixedVersion_Id(int id)
+	{
+		this.fixed_version_id = "" + id;
+	}
+
+	public void setPriority_Id(int id)
+	{
+		this.priority_id = "" + id;
+	}
 }

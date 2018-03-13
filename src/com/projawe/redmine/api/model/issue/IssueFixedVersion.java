@@ -10,6 +10,11 @@ public class IssueFixedVersion {
 	@XStreamAsAttribute
 	protected String name;
 
+	public IssueFixedVersion(int id)
+	{
+		this.id = id;
+	}
+	
 	public IssueFixedVersion(int id, String name)
 	{
 		this.id = id;
