@@ -1,0 +1,160 @@
+<issues total_count="8" offset="0" limit="25" type="array">
+<issue>
+<id>580</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="1" name="New"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<subject>New task</subject>
+<description>Description</description>
+<start_date>2018-03-14</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-03-14T07:45:21Z</created_on>
+<updated_on>2018-03-14T07:45:21Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>579</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="1" name="New"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<assigned_to id="16" name="Johnny English"/>
+<fixed_version id="39" name="Plugin 1.0.2"/>
+<subject>Test</subject>
+<description/>
+<start_date>2018-03-14</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-03-14T07:26:37Z</created_on>
+<updated_on>2018-03-14T07:37:52Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>565</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="1" name="New"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<assigned_to id="17" name="Peter Guets"/>
+<fixed_version id="41" name="Plugin 1.0.3"/>
+<subject>Filter table by query</subject>
+<description>Filter table by query</description>
+<start_date>2018-03-10</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-03-10T05:16:23Z</created_on>
+<updated_on>2018-03-10T05:16:23Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>564</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="1" name="New"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<assigned_to id="17" name="Peter Guets"/>
+<fixed_version id="39" name="Plugin 1.0.2"/>
+<subject>Read comments</subject>
+<description>Read and show issue comments.</description>
+<start_date>2018-03-10</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-03-10T05:15:53Z</created_on>
+<updated_on>2018-03-10T05:15:53Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>563</id>
+<project id="7" name="GuestProject"/>
+<tracker id="2" name="Feature"/>
+<status id="1" name="New"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<assigned_to id="16" name="Johnny English"/>
+<fixed_version id="39" name="Plugin 1.0.2"/>
+<subject>Create issue</subject>
+<description>Create new issue</description>
+<start_date>2018-03-10</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-03-10T05:14:58Z</created_on>
+<updated_on>2018-03-10T05:14:58Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>559</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="3" name="Resolved"/>
+<priority id="2" name="Normal"/>
+<author id="17" name="Peter Guets"/>
+<assigned_to id="17" name="Peter Guets"/>
+<fixed_version id="39" name="Plugin 1.0.2"/>
+<subject>Read membership API.</subject>
+<description>aaa</description>
+<start_date>2018-03-02</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-03-02T09:15:42Z</created_on>
+<updated_on>2018-03-10T05:15:24Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>543</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="3" name="Resolved"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<assigned_to id="16" name="Johnny English"/>
+<fixed_version id="39" name="Plugin 1.0.2"/>
+<subject>Filter table by user/version/status.</subject>
+<description/>
+<start_date>2018-02-20</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-02-20T14:13:41Z</created_on>
+<updated_on>2018-03-07T05:59:29Z</updated_on>
+<closed_on/>
+</issue>
+<issue>
+<id>542</id>
+<project id="7" name="GuestProject"/>
+<tracker id="1" name="Bug"/>
+<status id="3" name="Resolved"/>
+<priority id="2" name="Normal"/>
+<author id="16" name="Johnny English"/>
+<assigned_to id="16" name="Johnny English"/>
+<fixed_version id="41" name="Plugin 1.0.3"/>
+<subject>Refresh table command.</subject>
+<description>Refreshovanie tabulky.</description>
+<start_date>2018-02-20</start_date>
+<due_date/>
+<done_ratio>0</done_ratio>
+<is_private>false</is_private>
+<estimated_hours/>
+<created_on>2018-02-20T14:06:26Z</created_on>
+<updated_on>2018-03-10T05:15:13Z</updated_on>
+<closed_on/>
+</issue>
+</issues>

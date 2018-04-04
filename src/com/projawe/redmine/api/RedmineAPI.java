@@ -196,6 +196,7 @@ public class RedmineAPI
 
 			XStream xstream = this.xstreamCreateIssue();
 			String strIssue = xstream.toXML(issue).replace("__", "_");
+			System.out.println(strIssue);
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
@@ -204,7 +205,6 @@ public class RedmineAPI
 			conn.setDoInput(true);
 			conn.setRequestProperty ( "Content-Type", "text/xml" );
 			
-			System.out.println(strIssue);
 			OutputStreamWriter writer = null;
 			try {
 			    writer = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
@@ -249,9 +249,10 @@ public class RedmineAPI
 		{
 			URL url = new URL(this.url + "/issues/" + issue.getId() + ".xml?key=" + this.key);
 
-			XStream xstream = this.xstreamIssues();
-			String strIssue = xstream.toXML(issue);
-
+			XStream xstream = this.xstreamCreateIssue();
+			String strIssue = xstream.toXML(issue).replace("__", "_");
+			System.out.println(strIssue);
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("PUT");
 			conn.setRequestProperty("Accept", "application/xml");

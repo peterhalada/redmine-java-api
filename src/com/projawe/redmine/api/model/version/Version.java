@@ -6,6 +6,9 @@ public class Version {
 	
 	public String project, name, identifier, description, status, due_date, sharing, created_on, updated_on;
 
+	public static final String STATUS_OPEN = "open";
+	public static final String STATUS_CLOSED = "closed";
+	
 	public Version()
 	{
 	}
@@ -22,4 +25,12 @@ public class Version {
 		return name;
 	}
 
+	public String getStatus() {
+		return this.status;
+	}
+
+	public boolean isOpen()
+	{
+		return STATUS_OPEN.equals(this.status);
+	}
 }
