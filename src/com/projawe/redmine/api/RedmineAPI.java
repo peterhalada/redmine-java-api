@@ -53,10 +53,6 @@ public class RedmineAPI
 
 	protected Projects projects;
 	
-	protected Versions versions;
-
-	protected Memberships memberships;
-
 	/**
 	 * Initializes redmine API handler
 	 * 
@@ -454,49 +450,46 @@ public class RedmineAPI
 	public List<Version> getVersions(int projectId)
 	{
 		// TODO check also project
-		if ( this.versions == null )
+		try
 		{
-			try
-			{
-				URL url = new URL(this.url + "/projects/" + projectId + "/versions.xml?key=" + this.key);
-				
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Accept", "application/xml");
-		
-				if (conn.getResponseCode() != 200)
-					throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-		
-				// Process string buffer to XML 
-				//XStream xstream = new XStream();
-				XStream xstream = new XStream(new DomDriver());
-				xstream.alias("versions", Versions.class);
-				xstream.addImplicitCollection(Versions.class, "versions", Version.class);
-				xstream.alias("version", Version.class);
-				
-				xstream.aliasField("id", Integer.class, "id");
-				xstream.aliasField("project", String.class, "project");
-				xstream.aliasField("name", String.class, "name");
-				xstream.aliasField("description", String.class, "description");
-				xstream.aliasField("status", String.class, "status");
-				xstream.aliasField("due_date", String.class, "due_date");
-				xstream.aliasField("sharing", String.class, "sharing");
-				xstream.aliasField("created_on", String.class, "created_on");
-				xstream.aliasField("updated_on", String.class, "updated_on");
-				
-				Versions versions = (Versions)xstream.fromXML(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-				conn.disconnect();
-				
-				this.versions = versions;
-				
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			URL url = new URL(this.url + "/projects/" + projectId + "/versions.xml?key=" + this.key);
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/xml");
+	
+			if (conn.getResponseCode() != 200)
+				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+	
+			// Process string buffer to XML 
+			//XStream xstream = new XStream();
+			XStream xstream = new XStream(new DomDriver());
+			xstream.alias("versions", Versions.class);
+			xstream.addImplicitCollection(Versions.class, "versions", Version.class);
+			xstream.alias("version", Version.class);
+			
+			xstream.aliasField("id", Integer.class, "id");
+			xstream.aliasField("project", String.class, "project");
+			xstream.aliasField("name", String.class, "name");
+			xstream.aliasField("description", String.class, "description");
+			xstream.aliasField("status", String.class, "status");
+			xstream.aliasField("due_date", String.class, "due_date");
+			xstream.aliasField("sharing", String.class, "sharing");
+			xstream.aliasField("created_on", String.class, "created_on");
+			xstream.aliasField("updated_on", String.class, "updated_on");
+			
+			Versions versions = (Versions)xstream.fromXML(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			conn.disconnect();
+			
+			return versions.versions;
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
-		return this.versions.versions;
+		return null;
 	}
 
 	public List<Version> getOpenVersions(int projectId)
@@ -520,53 +513,49 @@ public class RedmineAPI
 	 */
 	public List<Membership> getMemberships(int projectId)
 	{
-		// TODO check also project
-		if ( this.memberships == null )
+		try
 		{
-			try
-			{
-				URL url = new URL(this.url + "/projects/" + projectId + "/memberships.xml?key=" + this.key);
-				
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Accept", "application/xml");
-		
-				if (conn.getResponseCode() != 200)
-					throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-		
-				// Process string buffer to XML 
-				//XStream xstream = new XStream();
-				XStream xstream = new XStream(new DomDriver());
-				xstream.alias("memberships", Memberships.class);
-				xstream.addImplicitCollection(Memberships.class, "memberships", Membership.class);
-				xstream.alias("membership", Membership.class);
-				
-				xstream.aliasField("id", Integer.class, "id");
-				xstream.aliasField("project", MembershipProject.class, "project");
-				xstream.aliasAttribute(MembershipProject.class, "id", "id");
-				xstream.aliasAttribute(MembershipProject.class, "name", "name");
-				xstream.aliasField("user", MembershipUser.class, "user");
-				xstream.aliasAttribute(MembershipUser.class, "id", "id");
-				xstream.aliasAttribute(MembershipUser.class, "name", "name");
-				xstream.aliasField("roles", MembershipRoles.class, "roles");
-				xstream.addImplicitCollection(MembershipRoles.class, "roles", MembershipRole.class);
-				xstream.alias("role", MembershipRole.class);
-				xstream.aliasAttribute(MembershipRole.class, "id", "id");
-				xstream.aliasAttribute(MembershipRole.class, "name", "name");
-				
-				Memberships memberships = (Memberships)xstream.fromXML(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-				conn.disconnect();
-				
-				this.memberships = memberships;
-				
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			URL url = new URL(this.url + "/projects/" + projectId + "/memberships.xml?key=" + this.key);
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/xml");
+	
+			if (conn.getResponseCode() != 200)
+				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+	
+			// Process string buffer to XML 
+			//XStream xstream = new XStream();
+			XStream xstream = new XStream(new DomDriver());
+			xstream.alias("memberships", Memberships.class);
+			xstream.addImplicitCollection(Memberships.class, "memberships", Membership.class);
+			xstream.alias("membership", Membership.class);
+			
+			xstream.aliasField("id", Integer.class, "id");
+			xstream.aliasField("project", MembershipProject.class, "project");
+			xstream.aliasAttribute(MembershipProject.class, "id", "id");
+			xstream.aliasAttribute(MembershipProject.class, "name", "name");
+			xstream.aliasField("user", MembershipUser.class, "user");
+			xstream.aliasAttribute(MembershipUser.class, "id", "id");
+			xstream.aliasAttribute(MembershipUser.class, "name", "name");
+			xstream.aliasField("roles", MembershipRoles.class, "roles");
+			xstream.addImplicitCollection(MembershipRoles.class, "roles", MembershipRole.class);
+			xstream.alias("role", MembershipRole.class);
+			xstream.aliasAttribute(MembershipRole.class, "id", "id");
+			xstream.aliasAttribute(MembershipRole.class, "name", "name");
+			
+			Memberships memberships = (Memberships)xstream.fromXML(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			conn.disconnect();
+			
+			return memberships.memberships;
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
-		return this.memberships.memberships;
+		return null;
 	}
 
 	/**
@@ -577,11 +566,11 @@ public class RedmineAPI
 	 */
 	public List<MembershipUser> getProjectUsers(int projectId)
 	{
-		this.getMemberships(projectId);
+		List<Membership> memberships = this.getMemberships(projectId);
 		
 		List<MembershipUser> users = new ArrayList<MembershipUser>();
 		
-		for(Membership mem : this.memberships.memberships)
+		for(Membership mem : memberships)
 		{
 			users.add(mem.user);
 		}
