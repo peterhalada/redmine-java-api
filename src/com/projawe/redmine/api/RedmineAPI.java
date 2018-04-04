@@ -499,6 +499,19 @@ public class RedmineAPI
 		return this.versions.versions;
 	}
 
+	public List<Version> getOpenVersions(int projectId)
+	{
+		List<Version> versions = new ArrayList<Version>();
+		
+		for(Version v : this.getVersions(projectId) )
+		{
+			if ( v.isOpen() )
+				versions.add(v);
+		}
+		
+		return versions;
+	}
+
 	/**
 	 * Get list of memberships for specific project
 	 * 
