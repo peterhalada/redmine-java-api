@@ -583,11 +583,14 @@ public class RedmineAPI
 	{
 		List<Project> projects = this.getProjects();
 		
-		for(Project p : projects)
+		if ( projects != null )
 		{
-			if ( projectName.equals(p.getName()))
+			for(Project p : projects)
 			{
-				return p;
+				if ( projectName.equals(p.getName()))
+				{
+					return p;
+				}
 			}
 		}
 		

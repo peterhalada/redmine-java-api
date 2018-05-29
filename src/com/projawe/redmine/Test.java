@@ -12,44 +12,48 @@ public class Test
 	public static void main(String []args)
 	{
 		String server = "http://redmine.projawe.com";
-		String key = "19d6c98934b935aa7744a821b44e75f002d4a7d5"; // "f29ddbd9af55aea74232723d094e78a098bf66df";
-		String projectName = "GuestProject";
+		String key = "253899f6aebfd78a97f772c377827e7794f17a4b";
+		String projectName = "ZltyMelon";
 
 		RedmineAPI api = new RedmineAPI();
 		api.init(server, key, projectName);
 		
 		Project prj = api.findProjectByName(projectName);
-		int projectId = prj.getId();
 		
-		List<Version> versions = api.getVersions(projectId);
-		
-		for(Version v : versions)
+		if ( prj != null )
 		{
-			System.out.println(v.getName() + " " + v.getStatus() );
-		}
-
-		/*List<Issue> issues = api.getIssues(projectId);
-		
-		for(Issue iss : issues)
-		{
-			if ( iss != null )
+			int projectId = prj.getId();
+			
+			List<Version> versions = api.getVersions(projectId);
+			
+			for(Version v : versions)
 			{
-				System.out.println("Issue " + iss.getId() + "." + iss.getSubject() + " ->> " + iss.getStatus().getName() );
+				System.out.println(v.getName() + " " + v.getStatus() );
 			}
-		}*/
-		
-		/*Issue i = new Issue();
-		i.setProject_Id(projectId);
-		i.setSubject("New task");
-		i.setDescription("Description");
-		//i.setPriority_Id(2);
-		api.createIssue(i);*/
-		
-		List<Membership> users = api.getMemberships(projectId);
-		
-		for(Membership m : users)
-		{
-			System.out.println(m.user.getId() + "." + m.user.getName());
+
+			/*List<Issue> issues = api.getIssues(projectId);
+			
+			for(Issue iss : issues)
+			{
+				if ( iss != null )
+				{
+					System.out.println("Issue " + iss.getId() + "." + iss.getSubject() + " ->> " + iss.getStatus().getName() );
+				}
+			}*/
+			
+			/*Issue i = new Issue();
+			i.setProject_Id(projectId);
+			i.setSubject("New task");
+			i.setDescription("Description");
+			//i.setPriority_Id(2);
+			api.createIssue(i);*/
+			
+			List<Membership> users = api.getMemberships(projectId);
+			
+			for(Membership m : users)
+			{
+				System.out.println(m.user.getId() + "." + m.user.getName());
+			}
 		}
 	}
 }
